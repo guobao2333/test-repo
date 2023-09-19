@@ -1,1 +1,59 @@
-网页测试
+<!doctype html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Title</title>
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+	</head>
+	<body>
+		<script src="../js/encode_main.js"></script>
+		<script src="../js/base64.min.js"></script>
+		<script src="../js/encode_main.js"></script>
+		<script src="../js/jquery.min.js">
+	<script src="../js/clipboard.min.js"></script>
+		<div class="alert alert-primary" role="alert" style="margin-top: 10px;font-size: 0.9em">
+			欢迎使用Base64加密文件
+		</div>
+		<section id="demo1">
+			<div style=" margin-top: .5em;width: 100%">
+				<div style="border-radius: 5px;border: 2px dashed rgba(160, 160, 160, 0.7);padding: 20px;">
+					<div id="droppable-zone" class="drag" style=" height: 100%;background: rgba(218, 218, 218, 0.87);width: 100%;padding-top: 100px;padding-bottom: 100px;position: relative;border-radius: 5px;">
+						<div id="droppable-zone-text" class="drag-text" style="line-height: 30px;font-size: 30px;color: #222d3f;text-align: center">
+							点击选择文件或将其拖拽到此处
+						</div>
+						<div class="drag-file" style="position: absolute;top: 0;left: 0;width: 100%; height: 100%;"><input type="file" id="input" name="file" style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;font-size: 0;opacity: 0;cursor: pointer;">
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<div style="font-size: 11px;padding-top: 5px;padding-bottom: 5px"><button class="btn btn-primary btn-sm" id="execute" value="Encode" style="margin-left: 10px;margin-right: 10px;font-size: 13px"><span class="icon-code"></span>加密</button> <label style="margin-right: 10px;"> <input id="auto-update" type="checkbox" value="1" checked style="vertical-align: middle;">自动更新 </label> <button class="btn btn-success btn-sm" id="btnCopy" style="font-size: 13px" onclick="saveJSON()" download="data.json"><span class="icon-copy"></span>下载</button>
+		</div>
+		<section id="demo">
+			<div style=" margin-top: .5em;width: 100%"><textarea id="output" rows="10" placeholder style="width: 100%;font: 400 13px system-ui;border: 1px solid #ddd;padding: 2px;color: #555555;" readonly></textarea>
+			</div>
+		</section>
+		<div class="col-md-10 offset-md-1" style="padding-top: 10px">
+			<div class role="alert" style="margin-top: 10px;font-size: 0.9em;color: #555555;">
+				<h5>Base64</h5>
+				<hr class="my-2">
+<script>
+    function saveJSON() {
+  var textArea = document.getElementById('demo');
+  var manifestJson = textArea.value;
+  var dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(manifestJson);
+  var downloadLink = document.createElement('a');
+  downloadLink.setAttribute('href', dataUri);
+  downloadLink.setAttribute('download', 'data.json');
+  downloadLink.style.display = 'none';
+  document.body.appendChild(downloadLink);
+  downloadLink.click();
+  document.body.removeChild(downloadLink);
+}
+</script>
+			</div>
+		</div>
+	</body>
+</html>
